@@ -40,11 +40,13 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
 {
     echo "# LeetCode Problems"
     echo
-    echo "| Problem | Title | Difficulty | Path |"
-    echo "|:---------|:-------|:------------|:------|"
+    echo "| No. | Problem | Title | Difficulty | Path |"
+    echo "|:----|:---------|:-------|:------------|:------|"
 
+    idx=1
     sort -n "$TMP_FILE" | while IFS='|' read -r pnum title_link difficulty path; do
-        echo "| $pnum | $title_link | $difficulty | [$path]($path) |"
+        echo "| $idx | $pnum | $title_link | $difficulty | [$path]($path) |"
+        idx=$((idx + 1))
     done
 } > "$OUTPUT_FILE"
 
