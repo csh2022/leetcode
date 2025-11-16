@@ -37,8 +37,6 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
 {
     echo "# LeetCode Problems"
     echo
-    echo "自动生成问题总览："
-    echo
     echo "| Question | Title | Difficulty | LeetCode Link | Path |"
     echo "|---------:|--------|------------|-------|------|"
 

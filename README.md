@@ -1,7 +1,5 @@
 # LeetCode Problems
 
-自动生成问题总览：
-
 | Question | Title | Difficulty | LeetCode Link | Path |
 |---------:|--------|------------|-------|------|
 | 1 | two-sum | Easy | [two-sum](https://leetcode.cn/problems/two-sum/description/) | [./template](./template) |
