@@ -1,7 +1,5 @@
 package problems
 
-// https://leetcode.cn/problems/two-sum/description/
-
 // brute force, time complexity: O(n^2), space complexity: O(1)
 func TwoSum1(nums []int, target int) []int {
 	for i, _ := range nums {
