@@ -1,5 +1,7 @@
 package problems
 
+// https://leetcode.cn/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150
+
 func MergeTwoSortedArray(nums1 []int, m int, nums2 []int, n int) {
 	for i, j, tail := m-1, n-1, m+n-1; i >= 0 || j >= 0; tail-- {
 		if i < 0 {
