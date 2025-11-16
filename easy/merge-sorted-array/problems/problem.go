@@ -24,16 +24,6 @@ func MergeTwoSortedArray(nums1 []int, m int, nums2 []int, n int) {
 	}
 }
 
-// type TwoSumFunc func([]int, int) []int
-
-// var TwoSum TwoSumFunc = TwoSum1
-
-// var TwoSum func([]int, int) []int = TwoSum1
-
-// var TwoSum = TwoSum1
-
-// var TwoSum = TwoSum2
-
 // // brute force, time complexity: O(n^2), space complexity: O(1)
 // func TwoSum1(nums []int, target int) []int {
 // 	for i, _ := range nums {
