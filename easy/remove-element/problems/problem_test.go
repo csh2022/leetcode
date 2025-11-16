@@ -5,18 +5,6 @@ import (
 	"testing"
 )
 
-func twoSlicesEqual(a, b []int, cnt int) bool {
-	if cnt != len(b) {
-		return false
-	}
-	for i := 0; i < cnt; i++ {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
 func TestTwoRemoveElement(t *testing.T) {
 	tests := []struct {
 		name     string
