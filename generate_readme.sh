@@ -50,7 +50,7 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
         title_text=$(echo "$title_link" | sed -nE 's/\[(.+)\]\(.+\)/\1/p')
 
         # 生成 Problem = "pnum. title"
-        problem_markdown="[$pnum. $title_text]$(echo "$title_link" | sed -nE 's/\[.+\](\(.*\))/\1/p')"
+        problem_markdown="$pnum. [$title_text]$(echo "$title_link" | sed -nE 's/\[.+\](\(.*\))/\1/p')"
 
         echo "| $idx | $problem_markdown | $difficulty | [$path]($path) |"
         idx=$((idx + 1))
