@@ -38,7 +38,7 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
     echo "# LeetCode Problems"
     echo
     echo "| Question | Title | Difficulty | LeetCode Link | Path |"
-    echo "|----------|--------|------------|----------------|------|"
+    echo "|:---------|:-------|:------------|:---------------|:------|"
 
     sort -n "$TMP_FILE" | while IFS='|' read -r qnum title link difficulty path; do
         echo "| $qnum | $title | $difficulty | [$title]($link) | [$path]($path) |"
