@@ -59,5 +59,5 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
 
 rm "$TMP_FILE"
 
-echo "生成完成: $OUTPUT_FILE"
+echo "README.md generated: $OUTPUT_FILE"
 
