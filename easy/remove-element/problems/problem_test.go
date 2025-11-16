@@ -1,6 +1,7 @@
 package problems
 
 import (
+	"algo/lib"
 	"testing"
 )
 
@@ -42,7 +43,7 @@ func TestTwoRemoveElement(t *testing.T) {
 			oldNums := make([]int, len(test.nums))
 			copy(oldNums, test.nums)
 			cnt := RemoveElement(test.nums, test.val)
-			if !twoSlicesEqual(test.nums, test.expected, cnt) {
+			if !lib.IsTwoIntSlicesEqual(test.nums[:cnt], test.expected) {
 				t.Errorf("RemoveElement(%v, %d) = %d, expected %v", oldNums, test.val, test.nums[:cnt], test.expected)
 			}
 		})
