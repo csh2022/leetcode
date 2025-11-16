@@ -63,7 +63,7 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
         problem_markdown="$pnum. [$title_text]$(echo "$title_link" | sed -nE 's/\[.+\](\(.*\))/\1/p')"
 
         # ★ 在这里追加固定字符串
-        echo "| $idx | $problem_markdown | $difficulty | $status | [$path](${path}/problems/problem.go/problems/problem.go) |"
+        echo "| $idx | $problem_markdown | $difficulty | $status | [$path](${path}/problems/problem.go) |"
 
         idx=$((idx + 1))
     done
