@@ -39,7 +39,7 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
     echo
     echo "自动生成问题总览："
     echo
-    echo "| Question | Title | Difficulty | Link | Path |"
+    echo "| Question | Title | Difficulty | LeetCode Link | Path |"
     echo "|---------:|--------|------------|-------|------|"
 
     sort -n "$TMP_FILE" | while IFS='|' read -r qnum title link difficulty path; do
