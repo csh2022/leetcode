@@ -12,10 +12,10 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
     | while read -r file; do
         line=$(head -n 1 "$file")
 
-        echo "$line" | grep -q "Question-" || continue
+        echo "$line" | grep -q "Problem-" || continue
 
-        qnum=$(echo "$line" | sed -nE 's/.*Question-([0-9]+).*/\1/p')
-        [ -z "$qnum" ] && continue
+        pnum=$(echo "$line" | sed -nE 's/.*Problem-([0-9]+).*/\1/p')
+        [ -z "$pnum" ] && continue
 
         title=$(echo "$line" | sed -nE 's/.*\[(.+)\]\(.+\).*/\1/p')
         [ -z "$title" ] && continue
@@ -33,18 +33,18 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
         # Title 和 Link 合并为 Markdown 链接
         title_link="[$title]($link)"
 
-        echo "$qnum|$title_link|$difficulty|$relpath" >> "$TMP_FILE"
+        echo "$pnum|$title_link|$difficulty|$relpath" >> "$TMP_FILE"
     done
 
 # 输出 README.md
 {
     echo "# LeetCode Problems"
     echo
-    echo "| Question | Title | Difficulty | Path |"
+    echo "| Problem | Title | Difficulty | Path |"
     echo "|:---------|:-------|:------------|:------|"
 
-    sort -n "$TMP_FILE" | while IFS='|' read -r qnum title_link difficulty path; do
-        echo "| $qnum | $title_link | $difficulty | [$path]($path) |"
+    sort -n "$TMP_FILE" | while IFS='|' read -r pnum title_link difficulty path; do
+        echo "| $pnum | $title_link | $difficulty | [$path]($path) |"
     done
 } > "$OUTPUT_FILE"
 
