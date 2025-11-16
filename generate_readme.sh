@@ -23,25 +23,28 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
         link=$(echo "$line" | sed -nE 's/.*\((https[^)]+)\).*/\1/p')
         [ -z "$link" ] && continue
 
-        # 提取难度（行尾最后一个词）
+        # 提取难度
         difficulty=$(echo "$line" | awk '{print $NF}')
         [ -z "$difficulty" ] && difficulty=""
 
-        # Path 改成纯链接可点击
+        # 路径链接
         relpath=$(dirname "$file")
 
-        echo "$qnum|$title|$link|$difficulty|$relpath" >> "$TMP_FILE"
+        # Title 和 Link 合并为 Markdown 链接
+        title_link="[$title]($link)"
+
+        echo "$qnum|$title_link|$difficulty|$relpath" >> "$TMP_FILE"
     done
 
 # 输出 README.md
 {
     echo "# LeetCode Problems"
     echo
-    echo "| Question | Title | Difficulty | LeetCode Link | Path |"
-    echo "|:---------|:-------|:------------|:---------------|:------|"
+    echo "| Question | Title | Difficulty | Path |"
+    echo "|:---------|:-------|:------------|:------|"
 
-    sort -n "$TMP_FILE" | while IFS='|' read -r qnum title link difficulty path; do
-        echo "| $qnum | $title | $difficulty | [$title]($link) | [$path]($path) |"
+    sort -n "$TMP_FILE" | while IFS='|' read -r qnum title_link difficulty path; do
+        echo "| $qnum | $title_link | $difficulty | [$path]($path) |"
     done
 } > "$OUTPUT_FILE"
 
