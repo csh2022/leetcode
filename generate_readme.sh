@@ -40,12 +40,19 @@ find . -mindepth 2 -maxdepth 3 -type f -name README.md \
 {
     echo "# LeetCode Problems"
     echo
-    echo "| No. | Problem | Title | Difficulty | Path |"
-    echo "|:----|:---------|:-------|:------------|:------|"
+    echo "| No. | Problem | Difficulty | Path |"
+    echo "|:----|:---------|:------------|:------|"
 
     idx=1
     sort -n "$TMP_FILE" | while IFS='|' read -r pnum title_link difficulty path; do
-        echo "| $idx | $pnum | $title_link | $difficulty | [$path]($path) |"
+        # title_link 已经是格式如: [Two Sum](https://leetcode.com/xxx)
+        # 取出标题文本
+        title_text=$(echo "$title_link" | sed -nE 's/\[(.+)\]\(.+\)/\1/p')
+
+        # 生成 Problem = "pnum. title"
+        problem_markdown="[$pnum. $title_text]$(echo "$title_link" | sed -nE 's/\[.+\](\(.*\))/\1/p')"
+
+        echo "| $idx | $problem_markdown | $difficulty | [$path]($path) |"
         idx=$((idx + 1))
     done
 } > "$OUTPUT_FILE"
