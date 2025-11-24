@@ -28,7 +28,7 @@ func MajorityElement1(nums []int) int {
 	hashTable := make(map[int]int)
 	half := len(nums) / 2
 	for _, num := range nums {
-		hashTable[num] += 1
+		hashTable[num] += 1 // 因为如果某个 key 在哈希表中不存在，哈希表会直接返回零值，对于 int 来说会返回 0，所以直接 +1 就可以完成计数动作
 		if hashTable[num] > half {
 			return num
 		}
